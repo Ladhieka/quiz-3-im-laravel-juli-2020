@@ -11,14 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', ['as' => 'public.images.quiz3', 'uses' => 'proyekController@viewImage']);
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/proyek', function () {
+    return view('layouts.master');
 });
 
-Route::get('/items/create', 'ItemController@create'); // menampilkan halaman form
-Route::post('/items', 'ItemController@store'); // menyimpan data
-Route::get('/items', 'ItemController@index'); // menampilkan semua
-Route::get('/items/{id}', 'ItemController@show'); // menampilkan detail item dengan id 
-Route::get('/items/{id}/edit', 'ItemController@edit'); // menampilkan form untuk edit item
-Route::put('/items/{id}', 'ItemController@update'); // menyimpan perubahan dari form edit
-Route::delete('/items/{id}', 'ItemController@destroy'); // menghapus data dengan id
+
+Route::get('/proyek/create', 'proyekController@create'); // menampilkan halaman form
+Route::post('/proyek', 'proyekController@store'); // menyimpan data
+Route::get('/proyek', 'proyekController@index'); // menampilkan semua
+Route::get('/proyek/{id}/daftarkan-staff', 'proyekController@show'); // menampilkan detail item dengan id 
+Route::post('/proyek/{id}/daftarkan-staff', 'proyekController@save'); // menyimpan data proyek 
+Route::get('/proyek/{id}/edit', 'proyekController@edit'); // menampilkan form untuk edit item
+Route::put('/proyek/{id}', 'proyekController@update'); // menyimpan perubahan dari form edit
+Route::delete('/proyek/{id}', 'proyekController@destroy'); // menghapus data dengan id
